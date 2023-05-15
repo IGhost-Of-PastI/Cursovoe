@@ -4,63 +4,7 @@
 
 using namespace std;
 
-//void SearchAndInput(list<Point>& points, Point newPoint)
-//{
-//    bool result = false;
-//    //*** Проверка не существует ли точки с такой же координатой x в списке   
-//    bool IsExist = false;
-//    for (auto bIter = points.begin(); bIter != points.end(); bIter++)
-//    {
-//        if ((*bIter).x == newPoint.x)
-//        {
-//            IsExist = true;
-//            cout << "Точка с такой координатой x существует";
-//            break;
-//        }
-//    }
-//    //***
-//    //*** Если такой точки не существут то доабвить точку
-//    if (IsExist == false)
-//    {
-//        //*** Чтобы проще искать сосдение точки, список заполняется в определённом порядке
-//        for (auto bIter = points.begin(); bIter != points.end(); bIter++)
-//        {
-//            //*** Поиск точки чья координата x больше координаты новой точки
-//            if ((*bIter).x > newPoint.x)
-//            {
-//                //*** Если такая точка найдена то передней вставляется новая точка
-//                if (bIter == points.begin())
-//                {
-//                    points.push_front(newPoint);
-//                    result = true;
-//                    break;
-//                }
-//                else
-//                {
-//                    points.insert(--bIter, newPoint);
-//                    result = true;
-//                    break;
-//                }
-//                //***
-//            }
-//            //***
-//        }
-//        //*** Если такая точка не найдена то просто добавить новую точку в конец списка.
-//        if (result != true)
-//        {
-//            points.push_back(newPoint);
-//        }
-//        //***
-//    }
-//    //***
-//}
-//void OutPutPoints(list<Point>& points)
-//{
-//    for (auto bIter = points.begin(); bIter != points.end(); bIter++)
-//    {
-//        cout << "Точка " << "x: " << (*bIter).x << " y: " << (*bIter).y << endl;
-//    }
-//}
+
 struct Point
 {
     double x;
