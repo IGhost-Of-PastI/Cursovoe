@@ -11,84 +11,87 @@ struct Point
 
 void DataInput(list<Point>& points)
 {
-    unsigned int count;
-    cout << "Введите колличество точке, которыми вы зададите функцию" << endl;
-    cin >> count;
-    cout << endl;
-    if (count >= 2)
+    for (;;)
     {
-        for (int i = 0; i < count; i++)
+        unsigned int count;
+        cout << "Введите колличество точке, которыми вы зададите функцию" << endl;
+        cin >> count;
+        cout << endl;
+        if (count >= 2)
         {
-            //*** Ввод новой точки
-            Point temp;
-            cout << "Введите X:" << endl;
-            cin >> temp.x;
-            cout << "Введите Y:" << endl;
-            cin >> temp.y;
-            //***
+            for (int i = 0; i < count; i++)
+            {
+                //*** Ввод новой точки
+                Point temp;
+                cout << "Введите X:" << endl;
+                cin >> temp.x;
+                cout << "Введите Y:" << endl;
+                cin >> temp.y;
+                //***
 
-            //*** Попытка добавить точку в список
-            bool result = false;
-            //*** Проверка не существует ли точки с такой же координатой x в списке   
-            bool IsExist = false;
-            for (auto bIter = points.begin(); bIter != points.end(); bIter++)
-            {
-                if ((*bIter).x == temp.x)
-                {
-                    IsExist = true;
-                    cout << "Точка с такой координатой x существует" << endl;
-                    i--;
-                    break;
-                }
-            }
-            //***
-            //*** Если такой точки не существут то доабвить точку
-            if (IsExist == false)
-            {
-                //*** Чтобы проще искать сосдение точки, список заполняется в определённом порядке
+                //*** Попытка добавить точку в список
+                bool result = false;
+                //*** Проверка не существует ли точки с такой же координатой x в списке   
+                bool IsExist = false;
                 for (auto bIter = points.begin(); bIter != points.end(); bIter++)
                 {
-                    //*** Поиск точки чья координата x больше координаты новой точки
-                    if ((*bIter).x > temp.x)
+                    if ((*bIter).x == temp.x)
                     {
-                        //*** Если такая точка найдена то передней вставляется новая точка
-                        if (bIter == points.begin())
+                        IsExist = true;
+                        cout << "Точка с такой координатой x существует" << endl;
+                        i--;
+                        break;
+                    }
+                }
+                //***
+                //*** Если такой точки не существут то доабвить точку
+                if (IsExist == false)
+                {
+                    //*** Чтобы проще искать сосдение точки, список заполняется в определённом порядке
+                    for (auto bIter = points.begin(); bIter != points.end(); bIter++)
+                    {
+                        //*** Поиск точки чья координата x больше координаты новой точки
+                        if ((*bIter).x > temp.x)
                         {
-                            points.push_front(temp);
-                            result = true;
-                            break;
-                        }
-                        else
-                        {
-                            points.insert(--bIter, temp);
-                            result = true;
-                            break;
+                            //*** Если такая точка найдена то передней вставляется новая точка
+                            if (bIter == points.begin())
+                            {
+                                points.push_front(temp);
+                                result = true;
+                                break;
+                            }
+                            else
+                            {
+                                points.insert(--bIter, temp);
+                                result = true;
+                                break;
+                            }
+                            //***
                         }
                         //***
                     }
+                    //*** Если такая точка не найдена то просто добавить новую точку в конец списка.
+                    if (result != true)
+                    {
+                        points.push_back(temp);
+                    }
                     //***
                 }
-                //*** Если такая точка не найдена то просто добавить новую точку в конец списка.
-                if (result != true)
-                {
-                    points.push_back(temp);
-                }
+                //***
                 //***
             }
-            //***
-            //***
+            cout << endl;
+            for (auto bIter = points.begin(); bIter != points.end(); bIter++)
+            {
+                cout << "Точка " << "x: " << (*bIter).x << " y: " << (*bIter).y << endl;
+            }
+            break;
         }
-        cout << endl;
-        for (auto bIter = points.begin(); bIter != points.end(); bIter++)
+        else
         {
-            cout << "Точка " << "x: " << (*bIter).x << " y: " << (*bIter).y << endl;
+            cout << "Нужно хотябы 2 опорные точки" << endl;
         }
     }
-    else
-    {
-        cout << "Нужно хотябы 2 опорные точки"<<endl;
-    }
-    
 }
 
 void LinearInterpolation(list<Point>& points) {
