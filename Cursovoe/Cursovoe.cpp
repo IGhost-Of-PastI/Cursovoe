@@ -4,15 +4,11 @@
 
 using namespace std;
 
-
 struct Point
 {
     double x;
     double y;
 };
-
-
-
 
 void DataInput(list<Point>& points)
 {
