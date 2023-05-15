@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include <list>
-#include <Windows.h>
 
 using namespace std;
 
